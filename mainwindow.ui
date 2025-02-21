@@ -29,7 +29,7 @@
     <property name="title">
      <string>Исходный массив</string>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="generateButton">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -65,7 +65,7 @@
     <property name="title">
      <string>Метод сортировки:</string>
     </property>
-    <widget class="QRadioButton" name="bubble_sort">
+    <widget class="QRadioButton" name="a">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -78,7 +78,7 @@
       <string>Пузырьковая</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="comb_sort">
+    <widget class="QRadioButton" name="c">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -91,7 +91,7 @@
       <string>Расческой</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="shaker_sort">
+    <widget class="QRadioButton" name="b">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -182,7 +182,7 @@
     <property name="title">
      <string>Отсортированный массив</string>
     </property>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="sortButton">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -205,7 +205,7 @@
       </rect>
      </property>
      <property name="value">
-      <number>24</number>
+      <number>0</number>
      </property>
     </widget>
     <widget class="QPlainTextEdit" name="plainTextEdit_2">

@@ -19,5 +19,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void generateArray();
+    void sortArray();
 };
 #endif // MAINWINDOW_H
