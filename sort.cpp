@@ -130,9 +130,60 @@ void QuickSort(std::vector<int>& values) {
 
 // слиянием
 
+void merge(std::vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1, n2 = right - mid;
+    std::vector<int> leftArr(n1), rightArr(n2);
 
+    for (int i = 0; i < n1; ++i) leftArr[i] = arr[left + i];
+    for (int i = 0; i < n2; ++i) rightArr[i] = arr[mid + 1 + i];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (leftArr[i] <= rightArr[j]) arr[k++] = leftArr[i++];
+        else arr[k++] = rightArr[j++];
+    }
+
+    while (i < n1) arr[k++] = leftArr[i++];
+    while (j < n2) arr[k++] = rightArr[j++];
+}
+
+void MergeSort(std::vector<int>& arr) {
+    if (arr.size() > 1) {
+        int mid = arr.size() / 2;
+        std::vector<int> left(arr.begin(), arr.begin() + mid);
+        std::vector<int> right(arr.begin() + mid, arr.end());
+
+        MergeSort(left);
+        MergeSort(right);
+
+        merge(arr, 0, mid - 1, arr.size() - 1);
+    }
+}
 
 //---------------------------------------------------------------------------
 
 // пирамидальная
 
+void heapify(std::vector<int>& arr, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) largest = left;
+    if (right < n && arr[right] > arr[largest]) largest = right;
+
+    if (largest != i) {
+        std::swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void HeapSort(std::vector<int>& arr) {
+    int n = arr.size();
+
+    for (int i = n / 2 - 1; i >= 0; --i) heapify(arr, n, i);
+    for (int i = n - 1; i > 0; --i) {
+        std::swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
