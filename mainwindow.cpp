@@ -5,6 +5,7 @@
 #include "sort.h"
 
 #include <QButtonGroup>
+#include <QElapsedTimer>
 #include <QOverload>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -42,6 +43,9 @@ void MainWindow::sortArray() {
     for (const QString &num : numbers)
         array.push_back(num.toInt());
 
+    QElapsedTimer timer;
+    timer.start();
+
     QList<QRadioButton*> buttons = ui->groupBox_2->findChildren<QRadioButton*>();
 
     std::sort(buttons.begin(), buttons.end(), [](QRadioButton *a, QRadioButton *b) {
@@ -62,10 +66,18 @@ void MainWindow::sortArray() {
             default: break;
             }
 
+    qint64 elapsedTime = timer.elapsed();
+
+    for(int i = 0; i<array.size(); i++){
+        ui->progressBar->setValue(i);
+        QApplication::processEvents();
+    }
+
     for (int num : array)
         sortedArrayText += QString::number(num) + " ";
 
     ui->plainTextEdit_2->setPlainText(sortedArrayText);
+    ui->plainTextEdit_3->setPlainText(QString("Время сортировки: %1 мс").arg(elapsedTime));
 }
 
 
