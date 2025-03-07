@@ -65,7 +65,7 @@
     <property name="title">
      <string>Метод сортировки:</string>
     </property>
-    <widget class="QRadioButton" name="a">
+    <widget class="QRadioButton" name="radioButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -78,7 +78,7 @@
       <string>Пузырьковая</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="c">
+    <widget class="QRadioButton" name="radioButton_3">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -91,7 +91,7 @@
       <string>Расческой</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="b">
+    <widget class="QRadioButton" name="radioButton_2">
      <property name="geometry">
       <rect>
        <x>20</x>
