@@ -1,18 +1,28 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include <algorithm>
 #include "sort.h"
 
 #include <QButtonGroup>
 #include <QElapsedTimer>
 #include <QOverload>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+    buttonGroup(new QButtonGroup(this))
 {
     ui->setupUi(this);
+
+    buttonGroup->addButton(ui->radioButton, 1);
+    buttonGroup->addButton(ui->radioButton_2, 2);
+    buttonGroup->addButton(ui->radioButton_3, 3);
+    buttonGroup->addButton(ui->radioButton_4, 4);
+    buttonGroup->addButton(ui->radioButton_5, 5);
+    buttonGroup->addButton(ui->radioButton_6, 6);
+    buttonGroup->addButton(ui->radioButton_7, 7);
+    buttonGroup->addButton(ui->radioButton_8, 8);
 
     // подключаем кнопки
     connect(ui->generateButton, &QPushButton::clicked, this, &MainWindow::generateArray);
@@ -43,28 +53,21 @@ void MainWindow::sortArray() {
     for (const QString &num : numbers)
         array.push_back(num.toInt());
 
+    int selectedSort = buttonGroup->checkedId();
+
     QElapsedTimer timer;
     timer.start();
-
-    QList<QRadioButton*> buttons = ui->groupBox_2->findChildren<QRadioButton*>();
-
-    std::sort(buttons.begin(), buttons.end(), [](QRadioButton *a, QRadioButton *b) {
-        return a->y() < b->y();
-    });
-
-    for (int i = 0; i < buttons.size(); ++i)
-        if (buttons[i]->isChecked())
-            switch(i) {
-            case 0: BubbleSort(array); break;
-            case 1: ShakerSort(array); break;
-            case 2: CombSort(array); break;
-            case 3: InsertionSort(array); break;
-            case 4: SelectionSort(array); break;
-            case 5: QuickSort(array); break;
-            case 6: MergeSort(array); break;
-            case 7: HeapSort(array); break;
-            default: break;
-            }
+    switch(selectedSort) {
+    case 1: BubbleSort(array); break;
+    case 2: ShakerSort(array); break;
+    case 3: CombSort(array); break;
+    case 4: InsertionSort(array); break;
+    case 5: SelectionSort(array); break;
+    case 6: QuickSort(array); break;
+    case 7: MergeSort(array); break;
+    case 8: HeapSort(array); break;
+    default: break;
+    }
 
     qint64 elapsedTime = timer.elapsed();
 
