@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     buttonGroup->addButton(ui->radioButton_7, 7);
     buttonGroup->addButton(ui->radioButton_8, 8);
 
-    // подключаем кнопки
+    // Connect buttons
     connect(ui->generateButton, &QPushButton::clicked, this, &MainWindow::generateArray);
     connect(ui->sortButton, &QPushButton::clicked, this, &MainWindow::sortArray);
 }

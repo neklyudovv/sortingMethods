@@ -7,12 +7,7 @@ void BubbleSort(std::vector<int>& values) {
         for (size_t idx_j = 0; idx_j + 1 < values.size() - idx_i; ++idx_j)
             if (values[idx_j + 1] < values[idx_j])
                 std::swap(values[idx_j], values[idx_j + 1]);
-
 }
-
-//---------------------------------------------------------------------------
-
-// шейкерная
 
 void ShakerSort(std::vector<int>& values) {
     if (values.empty())
@@ -36,12 +31,8 @@ void ShakerSort(std::vector<int>& values) {
     }
 }
 
-//---------------------------------------------------------------------------
-
-// расческой
-
-void CombSort(std::vector<int>& values) {   // расческой
-    const double factor = 1.247; // Фактор уменьшения
+void CombSort(std::vector<int>& values) {
+    const double factor = 1.247;
     double step = values.size() - 1;
 
     while (step >= 1) {
@@ -53,8 +44,6 @@ void CombSort(std::vector<int>& values) {   // расческой
         step /= factor;
     }
 
-    // сортировка пузырьком
-
     for (size_t idx_i = 0; idx_i + 1 < values.size(); ++idx_i) {
         for (size_t idx_j = 0; idx_j + 1 < values.size() - idx_i; ++idx_j) {
             if (values[idx_j + 1] < values[idx_j])
@@ -62,10 +51,6 @@ void CombSort(std::vector<int>& values) {   // расческой
         }
     }
 }
-
-//---------------------------------------------------------------------------
-
-// вставками
 
 void InsertionSort(std::vector<int>& values) {
     for (size_t i = 1; i < values.size(); ++i) {
@@ -79,20 +64,12 @@ void InsertionSort(std::vector<int>& values) {
     }
 }
 
-//---------------------------------------------------------------------------
-
-// выбором
-
 void SelectionSort(std::vector<int>& values) {
     for (std::vector<int>::iterator i = values.begin(); i != values.end(); ++i) {
-        std::vector<int>::iterator j = min_element(i, values.end());
+        std::vector<int>::iterator j = std::min_element(i, values.end());
         std::swap(*i, *j);
     }
 }
-
-//---------------------------------------------------------------------------
-
-// быстрая
 
 int Partition(std::vector<int>& values, int l, int r) {
     int x = values[r];
@@ -109,8 +86,6 @@ int Partition(std::vector<int>& values, int l, int r) {
     return less;
 }
 
-
-
 void QuickSortImpl(std::vector<int>& values, int l, int r) {
     if (l < r) {
         int q = Partition(values, l, r);
@@ -119,16 +94,10 @@ void QuickSortImpl(std::vector<int>& values, int l, int r) {
     }
 }
 
-
-
 void QuickSort(std::vector<int>& values) {
     if (!values.empty())
         QuickSortImpl(values, 0, values.size() - 1);
 }
-
-//---------------------------------------------------------------------------
-
-// слиянием
 
 void merge(std::vector<int>& arr, int left, int mid, int right) {
     int n1 = mid - left + 1, n2 = right - mid;
@@ -147,22 +116,21 @@ void merge(std::vector<int>& arr, int left, int mid, int right) {
     while (j < n2) arr[k++] = rightArr[j++];
 }
 
-void MergeSort(std::vector<int>& arr) {
-    if (arr.size() > 1) {
-        int mid = arr.size() / 2;
-        std::vector<int> left(arr.begin(), arr.begin() + mid);
-        std::vector<int> right(arr.begin() + mid, arr.end());
+void MergeSortImpl(std::vector<int>& arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
 
-        MergeSort(left);
-        MergeSort(right);
+        MergeSortImpl(arr, l, m);
+        MergeSortImpl(arr, m + 1, r);
 
-        merge(arr, 0, mid - 1, arr.size() - 1);
+        merge(arr, l, m, r);
     }
 }
 
-//---------------------------------------------------------------------------
-
-// пирамидальная
+void MergeSort(std::vector<int>& arr) {
+    if (!arr.empty())
+        MergeSortImpl(arr, 0, arr.size() - 1);
+}
 
 void heapify(std::vector<int>& arr, int n, int i) {
     int largest = i;

@@ -1,32 +1,32 @@
-# Сортировка массива с использованием различных алгоритмов
+# Array Sorting with Various Algorithms
 
-## Описание
-Программа генерирует случайный массив и предоставляет пользователю возможность выбрать один из восьми алгоритмов сортировки для его обработки. Результат сортировки отображается в текстовом поле, также выводится время, затраченное на выполнение сортировки. 
+## Description
+The program generates a random array and provides the user with the ability to choose one of eight sorting algorithms to process it. The sorting result is displayed in a text field, and the time taken for sorting is also shown.
 
-Лабораторная работа по обьектно-ориентированному программированию в вузе
+University laboratory work on object-oriented programming.
 
 ![screenshot](screenshot.png)
 
 ---
 
-## Структура проекта
-1. **mainwindow.cpp** – основной файл, который содержит реализацию функционала окна приложения, обработчики событий и логику генерации массива и сортировки.
-2. **sort.h** – заголовочный файл, который описывает все алгоритмы сортировки, доступные для использования.
-3. **sort.cpp** – файл, который реализует алгоритмы сортировки.
-4. **mainwindow.ui** – интерфейс пользователя, описанный в XML формате.
+## Project Structure
+1. **mainwindow.cpp** – The main file containing the implementation of the application window functionality, event handlers, and logic for array generation and sorting.
+2. **sort.h** – Header file describing all sorting algorithms available for use.
+3. **sort.cpp** – File implementing the sorting algorithms.
+4. **mainwindow.ui** – User interface described in XML format.
 
 ---
 
-## Описание работы программы
+## Program Description
 
-### Основной функционал
+### Main Functions
 
-1. **Генерация массива**:
-    - Программа генерирует случайный массив целых чисел с размером 20000 элементов.
-    - Массив отображается в текстовом поле.
+1. **Array Generation**:
+    - The program generates a random array of integers with a size of 20000 elements.
+    - The array is displayed in a text field.
 
-2. **Выбор алгоритма сортировки**:
-    - Пользователь может выбрать один из восьми алгоритмов сортировки:
+2. **Selecting a Sorting Algorithm**:
+    - The user can choose one of eight sorting algorithms:
         - BubbleSort
         - ShakerSort
         - CombSort
@@ -35,30 +35,30 @@
         - QuickSort
         - MergeSort
         - HeapSort
-    - Каждый алгоритм реализован в отдельной функции, используя стандартные алгоритмы и методы.
+    - Each algorithm is implemented in a separate function using standard algorithms and methods.
 
-3. **Процесс сортировки**:
-    - Когда пользователь нажимает кнопку "Сортировать", выбранный алгоритм сортирует массив.
-    - Время выполнения сортировки отображается в текстовом поле.
+3. **Sorting Process**:
+    - When the user clicks the "Sort" button, the selected algorithm sorts the array.
+    - The sorting execution time is displayed in a text field.
 
-### Алгоритмы сортировки
+### Sorting Algorithms
 
-- **BubbleSort**: Сортировка с помощью пузырькового метода.
-- **ShakerSort**: Улучшенная версия пузырьковой сортировки.
-- **CombSort**: Сортировка с использованием «расчески».
-- **InsertionSort**: Сортировка вставками.
-- **SelectionSort**: Сортировка выбором.
-- **QuickSort**: Быстрая сортировка.
-- **MergeSort**: Сортировка слиянием.
-- **HeapSort**: Пирамидальная сортировка.
+- **BubbleSort**: Sorting using the bubble method.
+- **ShakerSort**: An improved version of bubble sort.
+- **CombSort**: Sorting using the "comb" method.
+- **InsertionSort**: Sorting by insertion.
+- **SelectionSort**: Sorting by selection.
+- **QuickSort**: Quick sort.
+- **MergeSort**: Merge sort.
+- **HeapSort**: Heap sort.
 
 ---
 
-### Технические детали
-Интерфейс построен с использованием Qt. В нем имеются кнопки для генерации массива и запуска сортировки, текстовые поля для отображения массива и результата.
+### Technical Details
+The interface is built using Qt. It features buttons for array generation and starting the sort, and text fields for displaying the array and the result.
 
 ---
 
 ## TODO
-- Добавить возможность выбора размера массива для генерации.
-- Улучшить визуализацию работы прогресс-бара, добавив более детальную информацию о ходе выполнения.
+- Add the ability to select the array size for generation.
+- Improve the progress bar visualization by adding more detailed information about the execution progress.
